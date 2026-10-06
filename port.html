@@ -1,0 +1,835 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Thallapalli Sidhu | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080b14;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Background */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #00eaff;
+            filter: blur(180px);
+            opacity: 0.12;
+            top: -150px;
+            left: -150px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: #8a2be2;
+            filter: blur(180px);
+            opacity: 0.12;
+            bottom: -150px;
+            right: -150px;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 11, 20, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00eaff;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00eaff;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .profile-circle {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            border: 3px solid #00eaff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: #00eaff;
+            box-shadow: 0 0 35px rgba(0,234,255,0.35);
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%,100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 75px);
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #00eaff;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .typing {
+            color: #00eaff;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #bbb;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #00eaff;
+            color: #05070c;
+        }
+
+        .secondary {
+            border: 1px solid #00eaff;
+            color: #00eaff;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(0,234,255,0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #00eaff;
+        }
+
+        /* About */
+        .about-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 30px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #00eaff;
+            box-shadow: 0 0 25px rgba(0,234,255,0.12);
+        }
+
+        .card h3 {
+            color: #00eaff;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .card p {
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        /* Education */
+        .education {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .education-card {
+            position: relative;
+            padding: 30px;
+            border-left: 3px solid #00eaff;
+            background: rgba(255,255,255,0.04);
+            border-radius: 0 18px 18px 0;
+        }
+
+        .education-card h3 {
+            color: #00eaff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .education-card p {
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        .cgpa {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: rgba(0,234,255,0.1);
+            color: #00eaff;
+        }
+
+        /* Skills */
+        .skills-container {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .skill {
+            background: rgba(255,255,255,0.04);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .skill-header span:first-child {
+            font-weight: bold;
+        }
+
+        .skill-header span:last-child {
+            color: #00eaff;
+        }
+
+        .progress {
+            height: 8px;
+            background: #202532;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #00eaff, #8a2be2);
+            border-radius: 10px;
+            transition: width 1.5s ease;
+        }
+
+        /* Project */
+        .project-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .project-card {
+            padding: 35px;
+            background: linear-gradient(
+                135deg,
+                rgba(0,234,255,0.08),
+                rgba(138,43,226,0.08)
+            );
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            transition: 0.4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 35px rgba(0,234,255,0.12);
+        }
+
+        .project-card h3 {
+            font-size: 28px;
+            color: #00eaff;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 13px;
+            border: 1px solid #00eaff;
+            color: #00eaff;
+            border-radius: 20px;
+            margin: 4px;
+            font-size: 13px;
+        }
+
+        /* Contact */
+        .contact-box {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            padding: 40px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contact-box p {
+            color: #bbb;
+            margin-bottom: 25px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #888;
+        }
+
+        footer span {
+            color: #00eaff;
+        }
+
+        /* Scroll animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .about-container,
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">SIDHU<span>.</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="profile-circle">
+                TS
+            </div>
+
+            <h1>THALLAPALLI <span>SIDHU</span></h1>
+
+            <h2>
+                B.Tech Student | 
+                <span class="typing"></span>
+            </h2>
+
+            <p>
+                Welcome to my professional portfolio. I am a B.Tech student
+                passionate about programming, technology and building creative
+                digital projects.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">View Projects</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
+
+        <div class="about-container">
+
+            <div class="card reveal">
+                <h3>Who I Am</h3>
+
+                <p>
+                    I am <strong>Thallapalli Sidhu</strong>, a B.Tech student
+                    from Sir CR Reddy Engineering College. I am interested in
+                    programming, software development and creating useful
+                    web-based projects.
+                </p>
+            </div>
+
+            <div class="card reveal">
+                <h3>My Goal</h3>
+
+                <p>
+                    My goal is to improve my technical skills, learn new
+                    technologies and become a successful software developer
+                    by working on real-world projects.
+                </p>
+            </div>
+
+            <div class="card reveal">
+                <h3>Location</h3>
+
+                <p>
+                    Village: <strong>Kankanallapalli</strong>
+                </p>
+            </div>
+
+            <div class="card reveal">
+                <h3>College</h3>
+
+                <p>
+                    <strong>Sir CR Reddy Engineering College</strong>
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Education -->
+    <section id="education">
+
+        <h2 class="section-title">
+            My <span>Education</span>
+        </h2>
+
+        <div class="education">
+
+            <div class="education-card reveal">
+
+                <h3>Bachelor of Technology (B.Tech)</h3>
+
+                <p>
+                    <strong>Sir CR Reddy Engineering College</strong>
+                </p>
+
+                <p>
+                    I am currently pursuing my B.Tech and developing
+                    knowledge in programming, computer science and
+                    software technologies.
+                </p>
+
+                <div class="cgpa">
+                    CGPA: 7.7
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills">
+
+        <h2 class="section-title">
+            My <span>Skills</span>
+        </h2>
+
+        <div class="skills-container">
+
+            <div class="skill reveal">
+
+                <div class="skill-header">
+                    <span>Python</span>
+                    <span>80%</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" data-width="80%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill reveal">
+
+                <div class="skill-header">
+                    <span>Java</span>
+                    <span>75%</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" data-width="75%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill reveal">
+
+                <div class="skill-header">
+                    <span>HTML & CSS</span>
+                    <span>85%</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" data-width="85%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill reveal">
+
+                <div class="skill-header">
+                    <span>JavaScript</span>
+                    <span>65%</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" data-width="65%"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Projects -->
+    <section id="projects">
+
+        <h2 class="section-title">
+            My <span>Project</span>
+        </h2>
+
+        <div class="project-container">
+
+            <div class="project-card reveal">
+
+                <h3>🎂 Birthday Surprise Website</h3>
+
+                <p>
+                    A creative birthday surprise website designed using
+                    HTML, CSS and JavaScript. The project includes a beautiful
+                    dark background, glowing stars, heart effects, candles,
+                    birthday cake and interactive surprise animations.
+                </p>
+
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Web Design</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact">
+
+        <h2 class="section-title">
+            Contact <span>Me</span>
+        </h2>
+
+        <div class="contact-box reveal">
+
+            <p>
+                Interested in connecting with me or discussing a project?
+            </p>
+
+            <a href="#home" class="btn primary">
+                Back to Top
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © <span id="year"></span>
+            Thallapalli Sidhu. All Rights Reserved.
+        </p>
+
+        <p>
+            B.Tech Student | Programmer | Developer
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        // Typing Animation
+        const words = [
+            "Python Developer",
+            "Java Programmer",
+            "Web Developer",
+            "Tech Enthusiast"
+        ];
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        const typing = document.querySelector(".typing");
+
+        function typeEffect() {
+
+            const word = words[wordIndex];
+
+            if (!deleting) {
+
+                typing.textContent = word.substring(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex === word.length) {
+
+                    deleting = true;
+
+                    setTimeout(typeEffect, 1200);
+                    return;
+                }
+
+            } else {
+
+                typing.textContent = word.substring(0, charIndex - 1);
+                charIndex--;
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+            }
+
+            setTimeout(typeEffect, deleting ? 60 : 100);
+        }
+
+        typeEffect();
+
+
+        // Scroll Reveal
+        function revealOnScroll() {
+
+            const elements = document.querySelectorAll(".reveal");
+
+            elements.forEach(element => {
+
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add("active");
+                }
+
+            });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+
+        revealOnScroll();
+
+
+        // Skill Progress Animation
+        const progressBars = document.querySelectorAll(".progress-bar");
+
+        const observer = new IntersectionObserver(entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    const width =
+                        entry.target.getAttribute("data-width");
+
+                    entry.target.style.width = width;
+
+                }
+
+            });
+
+        }, {
+            threshold: 0.5
+        });
+
+
+        progressBars.forEach(bar => {
+            observer.observe(bar);
+        });
+
+
+        // Current Year
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        // Navigation active smooth scroll
+        document.querySelectorAll("nav a").forEach(link => {
+
+            link.addEventListener("click", function(e) {
+
+                e.preventDefault();
+
+                const target =
+                    document.querySelector(this.getAttribute("href"));
+
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
